@@ -59,7 +59,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(!empty($projects))
+                            @if(count($projects)>0)
                                 @foreach ($projects as $project)
                                     <tr>
 
@@ -116,7 +116,7 @@
                             @else
                                 <tr>
                                     <td colspan="9">
-                                        No record found
+                                        No project found
                                     </td>
                                 </tr>
 

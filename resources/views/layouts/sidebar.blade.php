@@ -48,12 +48,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/project">Project List</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dropdowns.html">Dropdowns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="typography.html">Typography</a>
-                    </li>
                 </ul>
             </div>
         </li>
@@ -77,35 +71,6 @@
             </div>
         </li>
         @endif
-        <li class="nav-item">
-            <a class="nav-link" href="basic_elements.html">
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                <span class="menu-title">Forms</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="chartjs.html">
-                <i class="mdi mdi-chart-bar menu-icon"></i>
-                <span class="menu-title">Charts</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="basic-table.html">
-                <i class="mdi mdi-table-large menu-icon"></i>
-                <span class="menu-title">Tables</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link" href="#">
-              <span class="menu-title">Docs</span>
-            </span>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="documentation.html">
-                <i class="mdi mdi-file-document-box menu-icon"></i>
-                <span class="menu-title">Documentation</span>
-            </a>
-        </li>
         <li class="nav-item sidebar-actions">
             <div class="nav-link">
                 <div class="mt-4">

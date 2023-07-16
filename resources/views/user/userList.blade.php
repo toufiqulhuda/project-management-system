@@ -53,7 +53,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(!empty($users))
+                            @if(count($users)>0)
                             @foreach ($users as $user)
                             <tr>
                                 <td class="py-1">
@@ -100,7 +100,7 @@
                             @else
                                 <tr >
                                     <td colspan="9">
-                                        No record found
+                                        No users found
                                     </td>
                                 </tr>
 

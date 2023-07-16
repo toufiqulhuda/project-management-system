@@ -50,7 +50,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if(!empty($roles))
+                            @if(count($roles)>0)
                             @foreach ($roles as $role)
                             <tr>
                                 <td><h5>{{ $role->role_name}}</h5></td>
@@ -92,7 +92,7 @@
                             @else
                                 <tr >
                                     <td colspan="9">
-                                        No record found
+                                        No roles found
                                     </td>
                                 </tr>
 

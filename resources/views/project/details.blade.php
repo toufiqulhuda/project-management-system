@@ -49,7 +49,7 @@
                             </a>
                         </div>
                     </div>
-                    {{dd($attached_files)}}
+
                     <form class="forms-sample" method="POST" action="{{ route('project-add') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">

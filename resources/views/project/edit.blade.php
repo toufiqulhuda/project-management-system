@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if(!empty($attached_files))
+
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
@@ -109,6 +109,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @if(count($attached_files)>0)
                                         @foreach ($attached_files as $attached_file)
                                             <tr>
                                                 <th scope="row">{{$loop->index+1}}</th>
@@ -120,13 +121,21 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="4">
+                                                    No attachment found
+                                                </td>
+                                            </tr>
+
+                                        @endif
                                         </tbody>
                                     </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endif
+
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
