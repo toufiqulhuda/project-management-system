@@ -55,7 +55,7 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="name">Role Name <i class="mdi mdi-multiplication"></i></label>
-                                    <input type="text" class="form-control" id="name" name="name" required
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required
                                            placeholder="Name">
                                     @error('name')
                                     <span class="text-danger">{{$message}}</span>
@@ -67,7 +67,7 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="email">Description <i class="mdi mdi-multiplication"></i></label>
-                                    <textarea class="form-control" rows="4" id="description" name="description" required
+                                    <textarea class="form-control @error('description') is-invalid @enderror" rows="4" id="description" name="description" required
                                               placeholder="Description"></textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>

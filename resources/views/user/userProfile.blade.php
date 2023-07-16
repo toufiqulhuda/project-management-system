@@ -55,10 +55,10 @@
                     @if(!empty($users))
                         {{--                    <form class="forms-sample" method="POST" action="{{ route('') }}">--}}
                         <div class="row">
-                            <div class="col-sm-4 col-md-4 col-lg-4">
+                            <div class="col-4">
                                 <img src="{{asset(!empty(Auth::user()->images) ? Auth::user()->images :'/images/face0.jpg')}}" class="img-thumbnail" alt="image" >
                             </div>
-                            <div class="col-sm-8 col-md-8 col-lg-8">
+                            <div class="col-8 ">
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label for="name"><b>{{__('Full Name')}}</b> </label>

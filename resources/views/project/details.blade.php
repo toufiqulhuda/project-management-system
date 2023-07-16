@@ -56,7 +56,7 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="title">Title <i class="mdi mdi-multiplication"></i></label>
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required
+                                    <input type="text" class="form-control-plaintext @error('title') is-invalid @enderror" id="title" name="title" required
                                            placeholder="Title">
                                     @error('title')
                                     <span class="text-danger">{{$message}}</span>
@@ -89,6 +89,47 @@
                                     @error('isactive')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="attachment" class="form-label">Attached files<span class="mdi mdi-paperclip"></span></label>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm border align-middle">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">File Name</th>
+                                                <th scope="col">Download</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if(count($attached_files)>0)
+                                                @foreach ($attached_files as $attached_file)
+                                                    <tr>
+                                                        <th scope="row">{{$loop->index+1}}</th>
+                                                        <td><strong>{{$attached_file->file_name}}</strong></td>
+                                                        <td><a href="{{$attached_file->file_path}}"> <button type="button" class="btn btn-primary btn-sm rounded-pill"><i class="mdi mdi-download"></i> </button></a></td>
+                                                        <td>
+                                                            <a href="javascript:void(0)" data-url="{{ route('attachment.delete', $attached_file->id) }}"
+                                                               class="btn btn-danger btn-sm rounded-pill delete-attachment"><i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="4">
+                                                        No attachment found
+                                                    </td>
+                                                </tr>
+
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

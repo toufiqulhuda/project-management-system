@@ -55,7 +55,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Full Name <i class="mdi mdi-multiplication"></i></label>
-                                    <input type="text" class="form-control" id="name" name="name" required
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required
                                            placeholder="Name">
                                     @error('name')
                                     <span class="text-danger">{{$message}}</span>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Email address <i class="mdi mdi-multiplication"></i></label>
-                                    <input type="email" class="form-control" id="email" name="email" required
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required
                                            placeholder="Email">
                                     @error('email')
                                     <span class="text-danger">{{$message}}</span>
@@ -77,7 +77,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="password">Password <i class="mdi mdi-multiplication"></i></label>
-                                    <input type="password" class="form-control" id="password" name="password" required
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required
                                            placeholder="Password">
                                     @error('password')
                                     <span class="text-danger">{{$message}}</span>
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label for="confirmed"> Confirm Password <i
                                             class="mdi mdi-multiplication"></i></label>
-                                    <input type="password" class="form-control" id="password_confirm"
+                                    <input type="password" class="form-control @error('password_confirm') is-invalid @enderror" id="password_confirm"
                                            name="password_confirm" required placeholder="Password">
                                     @error('password_confirm')
                                     <span class="text-danger">{{$message}}</span>
@@ -100,7 +100,7 @@
                         <div class="form-group">
                             <label for="type">User Type <i class="mdi mdi-multiplication"></i></label>
 
-                            <select class="js-example-basic-single select2-hidden-accessible" id="type" name="type"
+                            <select class="js-example-basic-single select2-hidden-accessible @error('type') is-invalid @enderror" id="type" name="type"
                                     style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required>
                                 @if(!empty($userTypeList))
                                 @foreach($userTypeList as $userType)
@@ -115,24 +115,7 @@
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
-                        <!-- <div class="form-group">
-                          <label>File upload</label>
-                          <input type="file" name="img[]" class="file-upload-default">
-                          <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
-                            <span class="input-group-append">
-                              <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
-                            </span>
-                          </div>
-                        </div> -->
-                        <!-- <div class="form-group">
-                          <label for="userType">User Type</label>
-                          <input type="text" class="form-control" id="userType" placeholder="User Type">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleTextarea1">Address</label>
-                          <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                        </div> -->
+
                         <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i> Save
                         </button>
                         <button class="btn btn-secondary"><i class="mdi mdi-close-circle-outline"></i> Close</button>

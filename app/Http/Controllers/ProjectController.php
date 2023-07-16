@@ -138,6 +138,7 @@ class ProjectController extends Controller
     /* Update project */
     public function update()
     {
+
         return view('project.edit');
     }
 
