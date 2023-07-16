@@ -153,7 +153,7 @@ class ProjectController extends Controller
             ->where('p.project_id','=',$projectId)
             ->select('p.project_id', 'p.title','p.description','p.status','p.isactive','ur.name as created_by',
                 'p.created_at','p.created_by_ip')
-            ->get();
+            ->first();
         $attached_files = Attachment::select('id','file_name','file_path')
             ->join('projects','projects.project_id','=','attachments.project_id')
             ->where('projects.project_id','=',$projectId)

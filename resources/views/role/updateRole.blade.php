@@ -56,7 +56,7 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="name">{{__('Role Name')}} <i class="mdi mdi-multiplication"></i></label>
-                                    <input type="text" class="form-control" id="role_name" name="role_name" required value="{{$role->role_name}}"
+                                    <input type="text" class="form-control @error('role_name') is-invalid @enderror" id="role_name" name="role_name" required value="{{$role->role_name}}"
                                            placeholder="role_name">
                                     @error('role_name')
                                     <span class="text-danger">{{$message}}</span>
@@ -68,7 +68,7 @@
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
                                     <label for="email">{{__('Description')}} <i class="mdi mdi-multiplication"></i></label>
-                                    <textarea class="form-control" rows="4" id="description" name="description" required
+                                    <textarea class="form-control @error('description') is-invalid @enderror" rows="4" id="description" name="description" required
                                               placeholder="Description">{{$role->description}}</textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>

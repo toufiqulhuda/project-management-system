@@ -57,7 +57,7 @@
                                    class="col-md-4 control-label"><b>{{__('Current Password')}}</b></label>
 
                             <div class="col-md-6">
-                                <input id="current-password" type="password" class="form-control"
+                                <input id="current-password" type="password" class="form-control @error('current-password') is-invalid @enderror"
                                        name="current-password" required>
 
                                 @if ($errors->has('current-password'))
@@ -71,7 +71,7 @@
                                    class="col-md-4 control-label"><b>{{__('New Password')}}</b></label>
 
                             <div class="col-md-6">
-                                <input id="new-password" type="password" class="form-control" name="new-password"
+                                <input id="new-password" type="password" class="form-control @error('new-password') is-invalid @enderror" name="new-password"
                                        required>
 
                                 @if ($errors->has('new-password'))
@@ -85,7 +85,7 @@
                                    class="col-md-4 control-label"><b>{{ __('Confirm New Password') }}</b></label>
 
                             <div class="col-md-6">
-                                <input id="new-password-confirm" type="password" class="form-control"
+                                <input id="new-password-confirm" type="password" class="form-control @error('new-password_confirmation') is-invalid @enderror"
                                        name="new-password_confirmation" required>
                             </div>
                         </div>

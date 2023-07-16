@@ -126,8 +126,10 @@ class UserController extends Controller
                 ->where('id',$userId)
                 ->select('id','name', 'email','address','contact','images','type')
                 ->first();
+            $userTypeList = Role::select('roleid','role_name')
+            ->where('isactive','1')->get();
 
-            return view('user.editUser')->with(compact('users'));
+            return view('user.editUser')->with(compact('users','userTypeList'));
 
 
     }

@@ -55,14 +55,14 @@
 
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
-                                <img src="{{asset($users->images)}}" alt="image" class="border">
+                                <img src="{{asset(!empty($users->images) ? $users->images : '/images/face0.jpg')}}" alt="image" class="img-thumbnail">
                             </div>
                             <div class="col-sm-8 col-md-8 col-lg-8">
 
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label for="name"><b>{{__('Full Name')}}</b> <i class="mdi mdi-multiplication"></i></label>
-                                            <input type="text" class="form-control" id="name" name="name" required
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="name" name="name" required
                                                    placeholder="Name" value="{{ $users->name }}">
                                             @error('email')
                                             <span class="text-danger">{{$message}}</span>
@@ -82,7 +82,7 @@
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label for="address"><b>{{__('Address')}}</b> <i class="mdi mdi-multiplication"></i></label>
-                                            <input type="text" class="form-control" id="address" name="address" required
+                                            <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" required
                                                    placeholder="Address" value="{{ $users->address }}">
                                             @error('address')
                                             <span class="text-danger">{{$message}}</span>
@@ -93,7 +93,7 @@
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label for="contact"><b>{{__('Contact')}}</b> <i class="mdi mdi-multiplication"></i></label>
-                                            <input type="text" class="form-control" id="contact" name="contact" required
+                                            <input type="text" class="form-control @error('contact') is-invalid @enderror" id="contact" name="contact" required
                                                    placeholder="Contact" value="{{ $users->contact }}">
                                             @error('contact')
                                             <span class="text-danger">{{$message}}</span>
@@ -101,16 +101,22 @@
                                         </div>
                                     </div>
 
+
                                     <div class="row">
                                         <div class="form-group col-lg-12">
                                             <label for="type"><b>{{__('User Type')}}</b> <i class="mdi mdi-multiplication"></i></label>
-                                            <select class="js-example-basic-single select2-hidden-accessible" id="type" name="type"
-                                                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                                <option value="1">Supper Admin</option>
-                                                <option value="2">Client</option>
-                                                <option value="3">Admin</option>
-                                                <option value="4">Employee</option>
+                                            <select class="js-example-basic-single select2-hidden-accessible @error('type') is-invalid @enderror" id="type" name="type"
+                                                    style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" required>
+                                                @if(count($userTypeList)>0)
+                                                    @foreach($userTypeList as $userType)
+
+                                                        <option value="{{$userType['roleid']}}" {{($users->type == $userType['roleid']) ? 'selected': ''}} >{{$userType['role_name']}}</option>
+                                                    @endforeach
+                                                @else
+                                                    <option value="">No type found</option>
+                                                @endif
                                             </select>
+
                                             @error('type')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror

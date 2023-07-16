@@ -49,15 +49,15 @@
                             </a>
                         </div>
                     </div>
-
+                    @if(!empty($projects))
                     <form class="forms-sample" method="POST" action="{{ route('project-add') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="title">Title <i class="mdi mdi-multiplication"></i></label>
+                                    <label for="title" class="font-weight-bold">Title <i class="mdi mdi-multiplication"></i></label>
                                     <input type="text" class="form-control-plaintext @error('title') is-invalid @enderror" id="title" name="title" required
-                                           placeholder="Title">
+                                           placeholder="Title" value="{{$projects->title}}" readonly>
                                     @error('title')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -67,9 +67,9 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="description">Description <i class="mdi mdi-multiplication"></i></label>
+                                    <label for="description" class="font-weight-bold">Description <i class="mdi mdi-multiplication"></i></label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" rows="10" id="description" name="description" required
-                                              placeholder="Description"></textarea>
+                                              placeholder="Description" readonly>{{$projects->description}} </textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -79,12 +79,12 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="isactive">Status <i class="mdi mdi-multiplication"></i></label>
+                                    <label for="isactive" class="font-weight-bold">Status <i class="mdi mdi-multiplication"></i></label>
                                     <select class="js-example-basic-single select2-hidden-accessible @error('isactive') is-invalid @enderror" required id="isactive" name="isactive"
                                             style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                        <option value="">...</option>
-                                        <option value="0">Draft</option>
-                                        <option value="1">Published</option>
+
+                                        <option value="{{$projects->isactive}}">{{($projects->isactive==0) ? 'Draft' : 'Published'}}</option>
+
                                     </select>
                                     @error('isactive')
                                     <span class="text-danger">{{$message}}</span>
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="attachment" class="form-label">Attached files<span class="mdi mdi-paperclip"></span></label>
+                                    <label for="attachment" class="form-label font-weight-bold" >Attached files<span class="mdi mdi-paperclip"></span></label>
                                     <div class="table-responsive">
                                         <table class="table table-sm border align-middle">
                                             <thead>
@@ -103,7 +103,7 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">File Name</th>
                                                 <th scope="col">Download</th>
-                                                <th scope="col">Action</th>
+
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -113,10 +113,10 @@
                                                         <th scope="row">{{$loop->index+1}}</th>
                                                         <td><strong>{{$attached_file->file_name}}</strong></td>
                                                         <td><a href="{{$attached_file->file_path}}"> <button type="button" class="btn btn-primary btn-sm rounded-pill"><i class="mdi mdi-download"></i> </button></a></td>
-                                                        <td>
-                                                            <a href="javascript:void(0)" data-url="{{ route('attachment.delete', $attached_file->id) }}"
-                                                               class="btn btn-danger btn-sm rounded-pill delete-attachment"><i class="mdi mdi-delete"></i></a>
-                                                        </td>
+{{--                                                        <td>--}}
+{{--                                                            <a href="javascript:void(0)" data-url="{{ route('attachment.delete', $attached_file->id) }}"--}}
+{{--                                                               class="btn btn-danger btn-sm rounded-pill delete-attachment"><i class="mdi mdi-delete"></i></a>--}}
+{{--                                                        </td>--}}
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -133,22 +133,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-lg-12">
-                                <div class="form-group">
-                                    <label for="attachment" class="form-label">Attachment <span class="mdi mdi-paperclip"></span></label>
-                                    <input class="form-control @error('attachment') is-invalid @enderror" type="file" id="attachment" name="attachment[]" multiple>
-                                    @error('attachment')
-                                    <span class="text-danger">{{$message}}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i> Save
-                        </button>
-                        <button class="btn btn-secondary"><i class="mdi mdi-close-circle-outline"></i> Close</button>
+{{--                        <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i> Save--}}
+{{--                        </button>--}}
+                        <button type="button" class="btn btn-secondary"><i class="mdi mdi-close-circle-outline"></i> Close</button>
                     </form>
+                    @else
+                        <p>No Project Found</p>
+                    @endif
                 </div>
             </div>
         </div>
