@@ -74,7 +74,7 @@
                                     <p class="mb-0 color-card-head">Done</p>
                                     <h2 class="text-white"> {{$doneProject}}</h2>
                                 </div>
-                                <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
+                                <i class="card-icon-indicator mdi mdi-check-circle bg-inverse-icon-primary"></i>
                             </div>
                             <h6 class="text-white">Projects</h6>
                         </div>
@@ -88,7 +88,7 @@
                                     <p class="mb-0 color-card-head">Cancelled</p>
                                     <h2 class="text-white">{{$cancelProject}}</h2>
                                 </div>
-                                <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
+                                <i class="card-icon-indicator mdi mdi-close-circle bg-inverse-icon-success"></i>
                             </div>
                             <h6 class="text-white">Projects</h6>
                         </div>

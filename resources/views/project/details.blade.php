@@ -55,7 +55,7 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="title" class="font-weight-bold">Title <i class="mdi mdi-multiplication"></i></label>
+                                    <label for="title" class="font-weight-bold">Title </label>
                                     <input type="text" class="form-control-plaintext @error('title') is-invalid @enderror" id="title" name="title" required
                                            placeholder="Title" value="{{$projects->title}}" readonly>
                                     @error('title')
@@ -67,7 +67,7 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="description" class="font-weight-bold">Description <i class="mdi mdi-multiplication"></i></label>
+                                    <label for="description" class="font-weight-bold">Description </label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" rows="10" id="description" name="description" required
                                               placeholder="Description" readonly>{{$projects->description}} </textarea>
                                     @error('description')
@@ -79,7 +79,7 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="isactive" class="font-weight-bold">Status <i class="mdi mdi-multiplication"></i></label>
+                                    <label for="isactive" class="font-weight-bold">Status </label>
                                     <select class="js-example-basic-single select2-hidden-accessible @error('isactive') is-invalid @enderror" required id="isactive" name="isactive"
                                             style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
 
@@ -103,7 +103,6 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">File Name</th>
                                                 <th scope="col">Download</th>
-
                                             </tr>
                                             </thead>
                                             <tbody>
