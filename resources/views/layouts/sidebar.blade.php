@@ -46,7 +46,7 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="/project">Project List</a>
+                        <a class="nav-link" href="{{route('project')}}">Project List</a>
                     </li>
                 </ul>
             </div>

@@ -63,7 +63,7 @@
                                 @foreach ($projects as $project)
                                     <tr>
 
-                                        <td><h5><a href="/project-details?id={{$project->project_id}}">{{ $project->title}}</a></h5></td>
+                                        <td><h5><a href="{{route('project-details')}}?id={{$project->project_id}}">{{ $project->title}}</a></h5></td>
                                         <td>{{ Str::limit($project->description,100) }}</td>
                                         <td><span class=" badge badge-pill badge-primary">{{$project->status}}</span></td>
                                         <td>
