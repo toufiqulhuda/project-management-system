@@ -18,15 +18,39 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert(
+        DB::table('roles')->insert([
             [
                 'role_name' => 'Supper Admin',
-                'description' => 'Can do anything any where',
+                'description' => 'Can monitor',
                 'isactive' => 1,
                 'created_at' => now(),
                 'created_by' => 1,
                 'created_by_ip' => request()->ip(),
-            ]
-        );
+            ],
+            [
+                'role_name' => 'Admin',
+                'description' => 'Admin can monitor client task',
+                'isactive' => 1,
+                'created_at' => now(),
+                'created_by' => 1,
+                'created_by_ip' => request()->ip(),
+            ],
+            [
+                'role_name' => 'Client',
+                'description' => 'Who order the work',
+                'isactive' => 1,
+                'created_at' => now(),
+                'created_by' => 1,
+                'created_by_ip' => request()->ip(),
+            ],
+            [
+                'role_name' => 'Employee',
+                'description' => 'Can delivered the works',
+                'isactive' => 1,
+                'created_at' => now(),
+                'created_by' => 1,
+                'created_by_ip' => request()->ip(),
+            ],
+        ]);
     }
 }

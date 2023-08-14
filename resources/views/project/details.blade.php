@@ -137,7 +137,9 @@
                         <button type="button" class="btn btn-secondary"><i class="mdi mdi-close-circle-outline"></i> Close</button>
                     </form>
                     @else
-                        <p>No Project Found</p>
+                        <div class="alert alert-info">
+                            No Project Found
+                        </div>
                     @endif
                 </div>
             </div>

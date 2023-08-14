@@ -51,7 +51,7 @@
                     </div>
                     @if(!empty($projects))
 
-                    <form class="forms-sample" method="POST" action="{{ route('project-add') }}" enctype="multipart/form-data">
+                    <form class="forms-sample" method="POST" action="{{ route('project-update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <label for="description">Description <i class="mdi mdi-multiplication"></i></label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" rows="10" id="description" name="description" required
-                                              placeholder="Description">{{$projects->description}}"</textarea>
+                                              placeholder="Description">{{$projects->description}}</textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -84,8 +84,8 @@
                                     <select class="js-example-basic-single select2-hidden-accessible @error('isactive') is-invalid @enderror" required id="isactive" name="isactive"
                                             style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                         <option value="">...</option>
-                                        <option value="0">Draft</option>
-                                        <option value="1">Published</option>
+                                        <option value="0" {{$projects->isactive == 0 ? "selected":""}}>Draft</option>
+                                        <option value="1" {{$projects->isactive == 1 ? "selected":""}}>Published</option>
                                     </select>
                                     @error('isactive')
                                     <span class="text-danger">{{$message}}</span>
@@ -147,13 +147,13 @@
                                 </div>
                             </div>
                         </div>
-
+                        <input type="hidden" name="id" value="{{$projects->project_id}}">
                         <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i> Save
                         </button>
                         <button class="btn btn-secondary"><i class="mdi mdi-close-circle-outline"></i> Close</button>
                     </form>
                     @else
-                        <div class="alert alert-success">
+                        <div class="alert alert-info">
                             No record found
                         </div>
                     @endif
