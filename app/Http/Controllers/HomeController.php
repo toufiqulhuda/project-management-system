@@ -111,7 +111,29 @@ class HomeController extends Controller
                 ->with(compact('draftProject','pendingProject','runningProject','doneProject','cancelProject'));
             //dd('Client');
         }elseif (Auth::user()->type == 4){ //employee
-            dd('employee');
+            $draftProject = 0;
+            $pendingProject = Project::where('isactive','=','1')
+                ->where('status','=','0')
+                ->where('assigned_to','=',Auth::user()->id)
+//                ->where('created_by','=',Auth::user()->id)
+                ->count();
+            $runningProject = Project::where('isactive','=','1')
+                ->where('status','=','1')
+                ->where('assigned_to','=',Auth::user()->id)
+//                ->where('created_by','=',Auth::user()->id)
+                ->count();
+            $doneProject = Project::where('isactive','=','1')
+                ->where('status','=','2')
+                ->where('assigned_to','=',Auth::user()->id)
+//                ->where('created_by','=',Auth::user()->id)
+                ->count();
+            $cancelProject = Project::where('isactive','=','1')
+                ->where('assigned_to','=',Auth::user()->id)
+                ->where('status','=','3')->count();
+            return view('home')
+                ->with(compact('draftProject','pendingProject','runningProject','doneProject','cancelProject'));
+
+//            dd('employee');
         }
 //        $wordlist = Wordlist::where('id', '<=', $correctedComparisons)->get();
 //        $wordCount = $wordlist->count();

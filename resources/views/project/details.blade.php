@@ -50,8 +50,8 @@
                         </div>
                     </div>
                     @if(!empty($projects))
-                    <form class="forms-sample" method="POST" action="{{ route('project-add') }}" enctype="multipart/form-data">
-                        {{ csrf_field() }}
+{{--                    <form class="forms-sample" method="POST" action="{{ route('project-add') }}" enctype="multipart/form-data">--}}
+{{--                        {{ csrf_field() }}--}}
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
@@ -67,8 +67,8 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="description" class="font-weight-bold">Description </label>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" rows="10" id="description" name="description" required
+                                    <label for="description" class="font-weight-bold">Instructions </label>
+                                    <textarea class="form-control-plaintext @error('description') is-invalid @enderror" rows="10" id="description" name="description" required
                                               placeholder="Description" readonly>{{$projects->description}} </textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>
@@ -102,6 +102,7 @@
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">File Name</th>
+                                                <th scope="col">Uploaded By</th>
                                                 <th scope="col">Download</th>
                                             </tr>
                                             </thead>
@@ -111,11 +112,8 @@
                                                     <tr>
                                                         <th scope="row">{{$loop->index+1}}</th>
                                                         <td><strong>{{$attached_file->file_name}}</strong></td>
+                                                        <td><span class=" badge badge-pill badge-warning">{{$attached_file->role_name}}</span></td>
                                                         <td><a href="{{$attached_file->file_path}}"> <button type="button" class="btn btn-primary btn-sm rounded-pill"><i class="mdi mdi-download"></i> </button></a></td>
-{{--                                                        <td>--}}
-{{--                                                            <a href="javascript:void(0)" data-url="{{ route('attachment.delete', $attached_file->id) }}"--}}
-{{--                                                               class="btn btn-danger btn-sm rounded-pill delete-attachment"><i class="mdi mdi-delete"></i></a>--}}
-{{--                                                        </td>--}}
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -132,10 +130,87 @@
                                 </div>
                             </div>
                         </div>
-{{--                        <button type="submit" class="btn btn-primary mr-2"><i class="mdi mdi-content-save"></i> Save--}}
-{{--                        </button>--}}
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Start At</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->start_at ?? ''}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >End At</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->end_at ?? ''}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Auth::user()->type == 2 or Auth::user()->type == 4 )
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Duration</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->duration ?? ''}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Cost in BDT</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->cost ?? ''}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Assigned To</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->assigned_to ?? ''}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Assigned By</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->assigned_by ?? ''}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Assigned At</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->assigned_at ?? ''}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Assigned By IP</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->assigned_by_ip ?? ''}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Created By</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->created_by ?? ''}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Created At</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->created_at ?? ''}}" readonly>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="duration" class="form-label font-weight-bold" >Created By IP</label>
+                                    <input type="text" class="form-control-plaintext" value="{{$projects->created_by_ip ?? ''}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        <a class="btn btn-primary" href="@if((Auth::user()->type==3) && ($projects->status==1))#@else{{route('project-edit')}}?id={{$projects->project_id}}@endif"><i class="mdi mdi-account-edit"></i> Edit</a>
                         <button type="button" class="btn btn-secondary"><i class="mdi mdi-close-circle-outline"></i> Close</button>
-                    </form>
+{{--                    </form>--}}
                     @else
                         <div class="alert alert-info">
                             No Project Found

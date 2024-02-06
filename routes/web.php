@@ -81,3 +81,4 @@ Route::post('/project-update', [App\Http\Controllers\ProjectController::class, '
 Route::post('/project-publish', [App\Http\Controllers\ProjectController::class, 'publish'])->name('project-publish');
 Route::get('/project-details', [App\Http\Controllers\ProjectController::class, 'details'])->name('project-details');
 Route::delete('attachment/{id}', [App\Http\Controllers\AttachmentController::class, 'delete'])->name('attachment.delete');
+Route::post('/project-assigned-to', [App\Http\Controllers\ProjectController::class, 'assigned_to'])->name('project-assigned-to');
